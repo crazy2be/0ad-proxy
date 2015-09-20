@@ -16,20 +16,21 @@ app.use (function(req, res, next) {
     });
 });
 app.all("/*", function(req, res) {
- //
  //console.log("Got request", req);
  var url = unescape(req.path).slice(1);
  console.log("Requesting url", url)
 
+ res.send('');
+
  var opts = {
-  url: 'https://go-ai.firebaseio.com/' + url,
+  url: 'https://0ad.firebaseio.com/' + url,
   method: req.method,
   body: req.body,
  };
  console.log(opts);
  request(opts, function(err, response, body) {
-	 //console.log(response);
-  res.send(response.body);
+	console.log(response.body);
+  //res.send(response.body);
  })
 });
 
